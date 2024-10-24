@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run autoreconf",
+            "type": "shell",
+            "command": "autoreconf",
+            "args": ["--install", "--force"],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Runs autoreconf to generate configuration files."
+        },
+        {
+            "label": "Run configure",
+            "dependsOn": [
+                "Run autoreconf",
+            ],
+            "type": "shell",
+            "command": "./configure",
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Runs configure to prepare the build system."
+        },
+        {
+            "label": "Build thread_pool",
+            "type": "shell",
+            "command": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Builds the thread_pool project."
+        }
+    ]
+}
